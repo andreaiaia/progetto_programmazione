@@ -1,6 +1,6 @@
 //============================================================================
-// Name        : src.cpp
-// Author      : Bianchi Andrea, Giannino Simone, Leccabue Matteo, Svelti Elena
+// Name        : progetto.cpp
+// Author      : Bianchi Andrea, Giannone Simone, Leccabue Matteo, Svelti Elena
 // Version     :
 // Copyright   : All rights reserved
 // Description : Hello World in C++, Ansi-style
@@ -10,6 +10,6 @@
 using namespace std;
 
 int main() {
-	cout << "Hello World" << endl; // prints Hello World
+	cout << "Hello World!" << endl; // prints Hello World!
 	return 0;
 }
