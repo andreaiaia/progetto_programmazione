@@ -5,6 +5,11 @@
  *      Author: Andrea
  */
 
+class schermo{
+	protected:
 
+	public:
+
+};
 
 
