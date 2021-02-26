@@ -9,6 +9,8 @@
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
+#include "keyboard.h"
+#include "schermo.h"
 using namespace std;
 
 int main() {
