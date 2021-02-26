@@ -5,6 +5,9 @@
  *      Author: Elena, Matteo
  */
 
+#include <windows.h>
+#define WINAPI __stdcall
+
 class schermo{
 	protected:
 
@@ -12,4 +15,7 @@ class schermo{
 
 };
 
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,LPSTR cmdLine, int showCmd){
 
+	return(0);
+}
