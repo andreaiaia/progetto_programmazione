@@ -32,7 +32,14 @@ public:
 		posizione[0] += movX;
 		posizione[1] += movY;
 	}
+/*
 
+	  void muovi(int movX, int movY, int altezza_schermo, int larghezza_schermo){
+		if(posizione[0] + movX < larghezza_schermo) posizione[0] += movX;
+		if(posizione[1] + movY < altezza_schermo) posizione[1] += movY;
+	}
+
+*/
 	void ferito(int danno) {
 		if (scudo) {
 			scudo = false;
