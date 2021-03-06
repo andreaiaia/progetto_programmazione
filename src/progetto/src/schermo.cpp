@@ -27,10 +27,10 @@ HINSTANCE hInst;
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 int CALLBACK WinMain(
-   _In_ HINSTANCE hInstance,
-   _In_opt_ HINSTANCE hPrevInstance,
-   _In_ LPSTR     lpCmdLine,
-   _In_ int       nCmdShow
+    HINSTANCE hInstance,
+    HINSTANCE hPrevInstance,
+    LPSTR     lpCmdLine,
+    int       nCmdShow
 )
 {
    WNDCLASSEX wcex;
@@ -50,11 +50,7 @@ int CALLBACK WinMain(
 
    if (!RegisterClassEx(&wcex))
    {
-      MessageBox(NULL,
-         _T("Call to RegisterClassEx failed!"),
-         _T("Windows Desktop Guided Tour"),
-         NULL);
-
+      MessageBox(NULL, _T("Call to RegisterClassEx failed!"), _T("Windows Desktop Guided Tour"), 0);
       return 1;
    }
 
@@ -85,11 +81,7 @@ int CALLBACK WinMain(
 
    if (!hWnd)
    {
-      MessageBox(NULL,
-         _T("Call to CreateWindow failed!"),
-         _T("Windows Desktop Guided Tour"),
-         NULL);
-
+      MessageBox(NULL, _T("Call to CreateWindow failed!"), _T("Windows Desktop Guided Tour"), 0);
       return 1;
    }
 
