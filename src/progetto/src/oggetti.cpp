@@ -4,21 +4,11 @@
  *  Qui ci sono le classi del protagonista, dei nemici
  *  e degli oggetti bonus del gioco
  */
+#include"oggetti.h"
 
-#include <iostream>
-using namespace std;
+// Funzioni classe Personaggio
 
-class personaggio {
-protected:
-	int max_vita;
-	int vita;
-	int posizione[2];	// posizione[0] è la x, posizione[1] è y
-	int attacco;
-	char rappresentazione;
-	bool scudo;
-
-public:
-	personaggio(int v, int p[], int a, char r, bool s){
+	Personaggio::Personaggio(int v, int p[], int a, char r, bool s){
 		max_vita = v;
 		vita = v;
 		posizione[0] = p[0];
@@ -28,19 +18,12 @@ public:
 		scudo = s;
 	}
 
-	void muovi(int movX, int movY){		// TODO: check per quando si va fuori schermo
-		posizione[0] += movX;
-		posizione[1] += movY;
-	}
-/*
-
-	void muovi(int movX, int movY, int altezza_schermo, int larghezza_schermo){
-		if(posizione[0] + movX < larghezza_schermo) posizione[0] += movX;
-		if(posizione[1] + movY < altezza_schermo) posizione[1] += movY;
+	void Personaggio::muovi(int movX, int movY, int altezza_schermo, int larghezza_schermo){
+		if(posizione[0] + movX < larghezza_schermo && posizione[0] + movX > 0) posizione[0] += movX;
+		if(posizione[1] + movY < altezza_schermo && posizione[1] + movY > 0) posizione[1] += movY;
 	}
 
-*/
-	void ferito(int danno) {
+	void Personaggio::ferito(int danno) {
 		if (scudo) {
 			scudo = false;
 		} else {
@@ -49,57 +32,61 @@ public:
 		}
 	}
 
-	void recupero(int punti_vita) {
+	void Personaggio::recupero(int punti_vita) {
 		if (vita + punti_vita > max_vita) vita = max_vita;
 		else vita += punti_vita;
 	}
 
-	int colpisci() {
+	int Personaggio::ritorna_attacco() {
 		return attacco;
 	}
 
-	void attiva_scudo() {
+	void Personaggio::attiva_scudo() {
 		scudo = true;
 	}
 
-	char aspetto() {
+	bool Personaggio::ritorna_scudo() {
+		return scudo ;
+	}
+
+	int Personaggio::ritorna_vita() {
+		return vita ;
+	}
+
+	void Personaggio::ritorna_posizione(int pos[]) {
+		pos[0]=posizione[0] ;
+		pos[1]=posizione[1] ;
+	}
+
+	char Personaggio::ritorna_aspetto() {
 		return rappresentazione;
 	}
-};
 
-class oggetto {
-protected:
-	char rappresentazione;
+// Funzioni classe Oggetto
 
-public:
-	oggetto(char r) {
+	Oggetto::Oggetto(char r) {
 		rappresentazione = r;
 	}
 
-	char aspetto() {
+	char Oggetto::ritorna_aspetto() {
 		return rappresentazione;
 	}
-};
 
-class cuore:public oggetto {
-protected:
-	int vita;
-public:
-	cuore(int v, char r):oggetto(r) {
+// Funzioni classe Cuore
+
+	Cuore::Cuore(int v, char r):Oggetto(r) {
 		vita = v;
 	}
 
-	int punti_vita () {
+	int Cuore::punti_vita () {
 		return vita;
 	}
-};
 
-class scudo:public oggetto {
-public:
-	scudo(char r):oggetto(r) {
+// Funzioni classe Scudo
+
+	Scudo::Scudo(char r):Oggetto(r) {
 
 	}
-};
 
 
 
