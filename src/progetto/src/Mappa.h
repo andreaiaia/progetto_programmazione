@@ -1,17 +1,40 @@
 /*
- * mappa.cpp
+ * mappa.h
  *
  *  Created on: 6 mar 2021
  *      Author: Simone
  */
 
-#include "mappa.h"
+#include <iostream>
+#include <string.h>
+#include <cstdlib>
+#include <ctime>
 
-class mappa {
+#include "Cuore.h"
+
+using namespace std ;
+
+struct scena {
+	char colonna[10] ;
+	scena * prev ;
+	scena * next ;
+};
+
+class Mappa {
 protected:
-	scena head ;
+	scena * head ;
+
+	int difficolta = 6;
+
+	// Variabili per tenere traccia della map generation
+	int nuova_piattaforma = 4;
+	int altitudine = 0;
+
 
 public:
+	Mappa();
+
+	void nuova_colonna(char output[]);
 
 /*
  * facciamo una bilista al cui interno memorizziamo tutte le "colonne" che compongono la mappa,
@@ -24,7 +47,4 @@ public:
  */
 
 
-
-
 };
-

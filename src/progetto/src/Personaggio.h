@@ -1,7 +1,7 @@
 /*
- * oggetti.h
+ * Personaggio.h
  *
- *  Created on: 26 feb 2021
+ *  Created on: 7 mar 2021
  *      Author: Andrea
  */
 #include <iostream>
@@ -38,26 +38,4 @@ public:
 	char ritorna_aspetto() ;
 };
 
-class Oggetto {
-protected:
-	char rappresentazione;
 
-public:
-	Oggetto(char r) ;
-
-	char ritorna_aspetto() ;
-};
-
-class Cuore:public Oggetto {
-protected:
-	int vita;
-public:
-	Cuore(int v, char r) ;
-
-	int punti_vita () ;
-};
-
-class Scudo:public Oggetto {
-public:
-	Scudo(char r) ;
-};
