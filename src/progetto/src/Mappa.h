@@ -6,16 +6,19 @@
  */
 
 #include <iostream>
-#include <string.h>
+#include <cstring>
 #include <cstdlib>
 #include <ctime>
-
+#include "Oggetto.h"
 #include "Cuore.h"
 
 using namespace std ;
 
+#define x 10
+#define y 10
+
 struct scena {
-	char colonna[10] ;
+	char schermo[x][y] ;
 	scena * prev ;
 	scena * next ;
 };
@@ -25,16 +28,17 @@ protected:
 	scena * head ;
 
 	int difficolta = 6;
-
+/*
 	// Variabili per tenere traccia della map generation
 	int nuova_piattaforma = 4;
 	int altitudine = 0;
-
+*/
 
 public:
 	Mappa();
 
-	void nuova_colonna(char output[]);
+	scena* nuovo_schermo(scena* head);
+	int Mappa::num_random(int max) ;
 
 /*
  * facciamo una bilista al cui interno memorizziamo tutte le "colonne" che compongono la mappa,

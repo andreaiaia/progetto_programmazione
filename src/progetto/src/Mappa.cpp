@@ -9,23 +9,49 @@
 
 Mappa::Mappa() {
 	head = new scena ;
-	char col[10] = "        "; // 9 spazi bianchi
-	strcpy(head->colonna, col) ;
+	char col[y] = "        "; // 9 spazi bianchi
 	head->prev = NULL ;
-	scena * p = head ;
-	int lunghezza_schermo = 3 ;
-	for (int i = 0; i < lunghezza_schermo; i++) {
-		p->next = new scena ;
-		(p->next)->prev = p ;
-		p = p->next ;
-		char nuova_col[10] ;
-		nuova_colonna(nuova_col) ;
-		strcpy(head->colonna, col) ;
-		p->next = NULL;
+	for (int i = 0; i < x; i++) {
+		// nuovo_schermo
+		strcpy(head->schermo[i], col) ;
 	}
+	head->next = NULL ;
 }
 
-void Mappa::nuova_colonna(char output[]) {
+scena* Mappa::nuovo_schermo(scena* head) {
+	scena*p=head ;
+	for(int j=0; j<x; j++) {
+		for(int i=0; i<y; i++) {
+			p->schermo[j][i]=' ' ;
+		}
+	}
+	int num_piatt = num_random(2)+1 ;
+	for(int i=0; i<num_piatt; i++) {
+		int altezza=num_random(3)+i ;
+		if(altezza>=9) altezza=8 ;
+		int origine=num_random(6)+1 ;
+		int lunghezza=num_random(3)+2 ;
+		p->schermo[origine][altezza]='╔' ;
+		for(int j=origine+1; j<lunghezza-1; j++) {
+			p->schermo[j][altezza]='═' ;
+		}
+		p->schermo[origine][altezza]='╗' ;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
 	srand( time(0) ) ;
 	char colonna[10] = "        " ; // 9 spazi
 
@@ -63,6 +89,14 @@ void Mappa::nuova_colonna(char output[]) {
 	}
 
 	strcpy(output, colonna);
+	*/
+	return head ;
 }
 
-// ═╗ ¤ ♥
+int Mappa::num_random(int max) {
+	srand( time(0) ) ;
+	int n = (rand() % max+1) ;
+	return n ;
+}
+
+// ╔ ═ ╗ ¤ ♥
