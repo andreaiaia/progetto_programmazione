@@ -29,7 +29,7 @@ scena* Mappa::nuovo_schermo(scena* head) {
 	int h_prec=0 ;
 	for(int i=1; i<num_piatt; i++) {
 		int h=num_random(3)+2+h_prec ;
-		genera_piattaforma(p->schermo, h) ;
+		if(h<x) genera_piattaforma(p->schermo, h) ;
 		h_prec=h ;
 	}
 	return head ;

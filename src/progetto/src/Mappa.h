@@ -38,8 +38,8 @@ public:
 	Mappa();
 
 	scena* nuovo_schermo(scena* head);
-	int Mappa::num_random(int max) ;
-	void Mappa::genera_piattaforma(char output[x][y], int altezza) ;
+	int num_random(int max) ;
+	void genera_piattaforma(char output[x][y], int altezza) ;
 
 /*
  * facciamo una bilista al cui interno memorizziamo tutte le "colonne" che compongono la mappa,
