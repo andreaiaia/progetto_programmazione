@@ -25,18 +25,21 @@ scena* Mappa::nuovo_schermo(scena* head) {
 			p->schermo[j][i]=' ' ;
 		}
 	}
-	int num_piatt = num_random(2)+1 ;
+	int num_piatt = num_random(2)+2 ;
 	int h_prec=0 ;
+	int o_prec=0 ;
 	for(int i=1; i<num_piatt; i++) {
 		int h=num_random(3)+2+h_prec ;
-		if(h<x) genera_piattaforma(p->schermo, h) ;
+		int origine=num_random(y-5)+o_prec;
+		if(h<x) genera_piattaforma(p->schermo, h, origine) ;
 		h_prec=h ;
+		o_prec=origine ;
 	}
 	return head ;
 }
 
-void Mappa::genera_piattaforma(char output[x][y], int altezza) {
-	  int origine=num_random(y-4) ;
+void Mappa::genera_piattaforma(char output[x][y], int altezza, int o) {
+	  int origine=o ;
 	  int lunghezza=num_random(3)+1 ;
 	  if (origine + lunghezza > y-1) lunghezza = y-1-origine;
 	  output[altezza][origine]='╔' ;
