@@ -8,50 +8,56 @@
 #include "Mappa.h"
 
 Mappa::Mappa() {
-	head = new scena ;
-	char col[y] = "        "; // 9 spazi bianchi
+	head = nuovo_schermo() ;
 	head->prev = NULL ;
-	for (int i = 0; i < x; i++) {
-		// nuovo_schermo
-		strcpy(head->schermo[i], col) ;
-	}
 	head->next = NULL ;
 }
 
-scena* Mappa::nuovo_schermo(scena* head) {
-	scena*p=head ;
+scena* Mappa::nuovo_schermo() {
+	scena*p= new scena ;
 	for(int j=0; j<x; j++) {
-		for(int i=0; i<y; i++) {
-			p->schermo[j][i]=' ' ;
+				for(int i=0; i<y; i++) {
+					if(j==1)p->schermo[j][i]='=' ;
+					if(j!=1)p->schermo[j][i]=' ' ;
+				}
+			}
+	int num_piatt = num_random(x/5)+2 ;                       // num_piatt= 2 o 3 (con x minimo 12 e y minimo 40)
+		int h_prec=1 ;
+		int o_prec=1 ;
+		int l_prec ;
+		for(int i=1; i<=num_piatt; i++) {                     // genera n piattaforme
+			if(h_prec<x-3) {
+			int altezza=3+h_prec ;                            // altezza minima=3
+			int origine=num_random(y/5)+2;                    // origine minima=1
+			int lunghezza=num_random(y/8)+6;
+			while ((origine>=o_prec-2 && origine<=o_prec+l_prec+2) || origine + lunghezza > y-3 || (origine+lunghezza>=o_prec-2 && origine+lunghezza<=o_prec+l_prec+2))
+				  {
+				  origine=num_random(y/2)+y/2 ;               // cambia origine se necessario
+				  }
+
+			genera_piattaforma(p->schermo, altezza, origine, lunghezza) ;
+			l_prec=lunghezza ;
+			h_prec=altezza ;
+			o_prec=origine ;
+			}
 		}
-	}
-	int num_piatt = num_random(2)+2 ;
-	int h_prec=0 ;
-	int o_prec=0 ;
-	for(int i=1; i<num_piatt; i++) {
-		int h=num_random(3)+2+h_prec ;
-		int origine=num_random(y-5)+o_prec;
-		if(h<x) genera_piattaforma(p->schermo, h, origine) ;
-		h_prec=h ;
-		o_prec=origine ;
-	}
-	return head ;
+	return *p ;
 }
 
-void Mappa::genera_piattaforma(char output[x][y], int altezza, int o) {
-	  int origine=o ;
-	  int lunghezza=num_random(3)+1 ;
-	  if (origine + lunghezza > y-1) lunghezza = y-1-origine;
-	  output[altezza][origine]='╔' ;
-	  for(int j=origine+1; j<origine+lunghezza; j++) {
-	    output[altezza][j]='═' ;
-	  }
-	  output[altezza][origine+lunghezza]='╗' ;
-}
+void Mappa::genera_piattaforma(char output[][y], int h, int o, int l) {
+	int altezza=h ;
+	int origine=o ;
+	int lunghezza=l ;
+	output[altezza][origine]='('; //inizio
+	for(int j=origine+1; j<origine+lunghezza; j++) {
+		output[altezza][j]='='; //centro
+	  	  }
+	  	  output[altezza][origine+lunghezza]=')'; //fine
+	}
 
 int Mappa::num_random(int max) {
 	srand( time(0) ) ;
-	int n = (rand() % max+1) ;
+	int n = (rand() % max) ;
 	return n ;
 }
 

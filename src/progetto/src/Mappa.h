@@ -37,9 +37,9 @@ protected:
 public:
 	Mappa();
 
-	scena* nuovo_schermo(scena* head);
+	scena* nuovo_schermo();
 	int num_random(int max) ;
-	void genera_piattaforma(char output[x][y], int altezza, int o) ;
+	void genera_piattaforma(char output[x][y], int altezza, int o, int l) ;
 
 /*
  * facciamo una bilista al cui interno memorizziamo tutte le "colonne" che compongono la mappa,
