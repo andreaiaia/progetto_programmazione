@@ -5,17 +5,35 @@
  *      Author: Elena, Matteo
  */
 
-// HelloWindowsDesktop.cpp
-// compile with: /D_UNICODE /DUNICODE /DWIN32 /D_WINDOWS /c
-
 #include <windows.h>
 
 const char g_szClassName[] = "myWindowClass";
 
-// Step 4: La procedura per la Finestra
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam){
     switch(msg)
     {
+		case WM_CHAR:
+            switch (wParam)
+            {
+                case 0x20:           // Process a spacebar.
+
+                break;
+				case 'w':           // Process a W.
+
+                break;
+				case 's':           // Process a S.
+
+                break;
+				case 'a':           // Process a A.
+
+                break;
+				case 'd':           // Process a D.
+
+                break;
+				default:
+				break;
+			}
+		break;
         case WM_CLOSE:
             DestroyWindow(hwnd);
         break;
@@ -33,7 +51,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     HWND hwnd;
     MSG Msg;
 
-    //Step 1: Registrazione della Window Class
     wc.cbSize        = sizeof(WNDCLASSEX);
     wc.style         = 0;
     wc.lpfnWndProc   = WndProc;
@@ -54,7 +71,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         return 0;
     }
 
-    // Step 2: Creazione della finestra
+    //Creazione della finestra
     hwnd = CreateWindowEx(
         WS_EX_CLIENTEDGE,
         g_szClassName,
@@ -72,7 +89,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     ShowWindow(hwnd, nCmdShow);
     UpdateWindow(hwnd);
-    // Step 3: Il ciclo dei messaggi
+
+    //messaggi
     while(GetMessage(&Msg, NULL, 0, 0) > 0)
     {
         TranslateMessage(&Msg);
