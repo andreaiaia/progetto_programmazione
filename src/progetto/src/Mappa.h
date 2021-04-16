@@ -8,8 +8,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <ctime>
-#include "Oggetto.h"
-#include "Cuore.h"
+#include "funzioni.h"
 using namespace std ;
 
 #define x 10
@@ -23,7 +22,6 @@ public:
 	Mappa();
 
 	void piattaforme();
-	int num_random(int) ;
 	void genera_piattaforma(int, int, int) ;
 	char contenuto(int, int);
 };

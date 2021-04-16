@@ -9,29 +9,35 @@
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
-#include "keyboard.h"
-#include "schermo.h"
+//#include "keyboard.h"
+//#include "schermo.h"
+#include "mappa.h"
+#include "Oggetto.h"
+#include "Cuore.h"
+#include "Personaggio.h"
+#include "funzioni.h"
 using namespace std;
 
-//void popola(char, int);
+void popola(char, int);
 
 int main() {
-	cout << "Hello World!" << endl; // prints Hello World!
+
 	return 0;
 
 }
 
 
-/*void popola(char figura, int d) {
+void popola(char figura, int d) {
 	int offset = 0;
 	if (d < 5) offset = 5-d;
 
 	int altezza = num_random(x) + offset;
 	int ordinata = num_random(y);
 
-	while ((schermo[altezza-1][ordinata] != '=') || (ordinata == 0 || ordinata == 1) || (schermo[altezza][ordinata] != '*')) {
+	while ((Mappa::contenuto(altezza-1, ordinata) != '=') || (ordinata == 0 || ordinata == 1) || (contenuto(altezza, ordinata) != '*')) {
 	    altezza = num_random(x) + offset;
 	    ordinata = num_random(y);
 	}
-	schermo[altezza][ordinata] = figura;
-}*/
+	Pesonaggio::posizione[0]=altezza;
+	posizione[1]=ordinata;
+}

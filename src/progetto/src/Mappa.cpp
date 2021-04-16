@@ -66,12 +66,6 @@ void Mappa::genera_piattaforma(int h, int o, int l) {
 	// Va creata una variabile di tipo nemico/oggetto nella quale salvare le coordinate del suddetto nemico/oggetto
 }*/
 
-int Mappa::num_random(int max) {
-	srand( time(0) ) ;
-	int n = (rand() % max) ;
-	return n ;
-}
-
 char Mappa::contenuto(int a, int b) {
 	if (a > x) a = x;
 	else if (a < 0) a = 1;
