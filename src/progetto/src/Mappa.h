@@ -23,5 +23,6 @@ public:
 
 	void piattaforme();
 	void genera_piattaforma(int, int, int) ;
+	void aggiungi_elemento(int [], char);
 	char contenuto(int, int);
 };

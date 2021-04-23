@@ -6,6 +6,7 @@
  */
 
 #include "Personaggio.h"
+#include "Mappa.h"
 
 Personaggio::Personaggio(int v, int p[], int a, char r, bool s){
 	max_vita = v;
@@ -17,9 +18,14 @@ Personaggio::Personaggio(int v, int p[], int a, char r, bool s){
 	scudo = s;
 }
 
-void Personaggio::muovi(int movX, int movY, int altezza_schermo, int larghezza_schermo){
-	if(posizione[0] + movX < larghezza_schermo && posizione[0] + movX > 0) posizione[0] += movX;
-	if(posizione[1] + movY < altezza_schermo && posizione[1] + movY > 0) posizione[1] += movY;
+void Personaggio::muovi(int movX, int movY){
+	if(posizione[0] + movY < y && posizione[0] + movY > 0) posizione[0] += movY;
+	if(posizione[1] + movX < x && posizione[1] + movX > 0) posizione[1] += movX;
+}
+
+void Personaggio::nuova_posizione(int posX, int posY) {
+	posizione[0] = posY;
+	posizione[1] = posX;
 }
 
 void Personaggio::ferito(int danno) {

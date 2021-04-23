@@ -11,7 +11,7 @@ class Personaggio {
 protected:
 	int max_vita;
 	int vita;
-	int posizione[2];	// posizione[0] è la x, posizione[1] è y
+	int posizione[2];	// posizione[0] ï¿½ la x, posizione[1] ï¿½ y
 	int attacco;
 	char rappresentazione;
 	bool scudo;
@@ -19,7 +19,9 @@ protected:
 public:
 	Personaggio(int v, int p[], int a, char r, bool s) ;
 
-	void muovi(int movX, int movY, int altezza_schermo, int larghezza_schermo) ;
+	void nuova_posizione(int, int);
+
+	void muovi(int movX, int movY) ;
 
 	void ferito(int danno) ;
 

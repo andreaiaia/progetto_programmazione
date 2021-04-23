@@ -50,21 +50,9 @@ void Mappa::genera_piattaforma(int h, int o, int l) {
 	schermo[altezza][origine+lunghezza]=')'; //fine
 }
 
-/*void Mappa::popola(char figura, int d) {
-	int offset = 0;
-	if (d < 5) offset = 5-d;
-
-	int altezza = num_random(x) + offset;
-	int ordinata = num_random(y);
-
-	while ((schermo[altezza-1][ordinata] != '=') || (ordinata == 0 || ordinata == 1) || (schermo[altezza][ordinata] != '*')) {
-	    altezza = num_random(x) + offset;
-	    ordinata = num_random(y);
-	}
-	schermo[altezza][ordinata] = figura;
-
-	// Va creata una variabile di tipo nemico/oggetto nella quale salvare le coordinate del suddetto nemico/oggetto
-}*/
+void Mappa::aggiungi_elemento(int pos[], char r) {
+	schermo[pos[0], pos[1]] = r;
+}
 
 char Mappa::contenuto(int a, int b) {
 	if (a > x) a = x;
