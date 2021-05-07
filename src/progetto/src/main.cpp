@@ -54,7 +54,7 @@ int main() {
 
 	// TODO: Visualizzare la mappa iniziale a schermo
 
-	Personaggio protagonista(10, [1,0], 2, "P", false);  // Creato il personaggio giocante
+	Personaggio protagonista(10, [1,0], 2, 'P', false);  // Creato il personaggio giocante
 
 	// START - loop del game (while ancora da inserire)
 	// TODO: Visualizzare a schermo il protagonista
