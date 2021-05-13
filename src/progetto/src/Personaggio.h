@@ -5,7 +5,6 @@
  *      Author: Andrea
  */
 #include <iostream>
-using namespace std;
 
 class Personaggio {
 protected:
@@ -17,7 +16,7 @@ protected:
 	bool scudo;
 
 public:
-	Personaggio(int v, int p[], int a, char r, bool s) ;
+	Personaggio(int v, int p1, int p2, int a, char r, bool s) ;
 
 	void nuova_posizione(int, int);
 
@@ -36,6 +35,8 @@ public:
 	int ritorna_vita() ;
 
 	void ritorna_posizione( int pos[]) ;
+
+	int bordo_schermo(int pos) ;
 
 	char ritorna_aspetto() ;
 };

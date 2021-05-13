@@ -8,11 +8,11 @@
 #include "Personaggio.h"
 #include "Mappa.h"
 
-Personaggio::Personaggio(int v, int p[], int a, char r, bool s){
+Personaggio::Personaggio(int v, int p1, int p2, int a, char r, bool s){
 	max_vita = v;
 	vita = v;
-	posizione[0] = p[0];
-	posizione[1] = p[1];
+	posizione[0] = p1;
+	posizione[1] = p2;
 	attacco = a;
 	rappresentazione = r;
 	scudo = s;
@@ -61,6 +61,12 @@ int Personaggio::ritorna_vita() {
 void Personaggio::ritorna_posizione(int pos[]) {
 	pos[0]=posizione[0] ;
 	pos[1]=posizione[1] ;
+}
+
+int Personaggio::bordo_schermo(int pos){
+	if(pos>y) return 1;
+	else if(pos<0) return -1;
+	else return 0 ;
 }
 
 char Personaggio::ritorna_aspetto() {

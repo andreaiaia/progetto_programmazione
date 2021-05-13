@@ -18,7 +18,7 @@
 using namespace std;
 
 struct lista_nemici {
-	Personaggio nemico(6, [2, 0], 2, "N", false); 
+	Personaggio nemico= Personaggio(6, 2, 0, 2, 'N', false);
 	lista_nemici * next;
 	lista_nemici * prev;
 };
@@ -54,9 +54,9 @@ int main() {
 
 	// TODO: Visualizzare la mappa iniziale a schermo
 
-	Personaggio protagonista(10, [1,0], 2, 'P', false);  // Creato il personaggio giocante
+	Personaggio protagonista= Personaggio(10, 1, 0, 2, 'P', false);  // Creato il personaggio giocante
 
-	// START - loop del game (while ancora da inserire)
+	while(protagonista.ritorna_vita>0){                        // START - loop del game
 	// TODO: Visualizzare a schermo il protagonista
 	/* 
 		while gioco in esecuzione:
@@ -71,7 +71,7 @@ int main() {
 	for (int diff=difficolta; diff > 0; diff--) {
 		int output[2];
 		popola(head, difficolta, output); // serve schermo per testare
-		(pNemici->nemico)::nuova_posizione(output[0], output[1]);
+		(pNemici->nemico).nuova_posizione(output[0], output[1]);
 		if (diff>1) {
 			pNemici->next = new lista_nemici;
 			pNemici->next->prev = pNemici;
@@ -83,12 +83,14 @@ int main() {
 	// Aggiunta/aggiornamento delle posizioni dei nemici nella mappa
 	aggiorna_mappa(head);
 
+
+	//genera oggetti
 	lista_oggetti *pOggetti = head->head_oggetti;
 	for (int diff = num_random(3); diff > 0; diff--)
 	{
 		int output[2];
 		popola(head, diff, output); // serve schermo per testare
-		(pOggetti->oggetto)::mod_posizione(output[0], output[1]);
+		(pOggetti->oggetto).mod_posizione(output[0], output[1]);
 		if (diff > 1)
 		{
 			pOggetti->next = new lista_oggetti;
@@ -98,30 +100,32 @@ int main() {
 		pOggetti->next = NULL;
 	}
 
-	// Aggiunta/aggiornamento delle posizioni dei nemici nella mappa
+	// Aggiunta/aggiornamento delle posizioni degli oggetti nella mappa
 	aggiorna_mappa(head);
 
 	// TODO Input dell'utente e movimento dei personaggi non giocanti (i nemici insomma)
 
+
+
 	// quando protagonista arriva a bordo schermo, passa a nuova schermata
 
-	if (/*come cacchio si vede che è a bordo schermo destro*/ && head->next == NULL)
+	if (protagonista.bordo_schermo==1 && head->next == NULL)
 	{
 		head->next = new lista_mappe;
 		head->next->prev = head;
 		head = head->next;
 		head->next = NULL;
-		protagonista::nuova_posizione(1, 0);
+		protagonista.nuova_posizione(1, 0);
 	}
-	else if (/* bordo schermo sinistro */ && head->prev != NULL)	{
+	else if (protagonista.bordo_schermo==-1 && head->prev != NULL)	{
 		head = head->prev;
-		protagonista::nuova_posizione(1, y);
-	} else if (/* se si trova a destra e va a destra della destra*/){
+		protagonista.nuova_posizione(1, y);
+	} else if (protagonista.bordo_schermo==1){
 		head = head->next;
-		protagonista::nuova_posizione(1, 0);
+		protagonista.nuova_posizione(1, 0);
 	}
 
-	// END - loop del game 
+	}                                                                    // END - loop del game
 
 	return 0;
 	}
@@ -147,9 +151,9 @@ void aggiorna_mappa(lista_mappe * head) {
 	lista_nemici * pNemici = head->head_nemici;
 	while (pNemici->next != NULL) {
 		int pos[2];
-		(pNemici->nemico)::ritorna_posizione(pos);
-		char r = (pNemici->nemico)::ritorna_aspetto;
-		(head->schermata)::aggiungi_elemento(pos, r);
+		(pNemici->nemico).ritorna_posizione(pos);
+		char r = (pNemici->nemico).ritorna_aspetto;
+		(head->schermata).aggiungi_elemento(pos, r);
 		pNemici = pNemici->next;
 	}
 
@@ -157,9 +161,9 @@ void aggiorna_mappa(lista_mappe * head) {
 	while (pOggetti->next != NULL)
 	{
 		int pos[2];
-		(pOggetti->oggetto)::ritorna_posizione(pos);
-		char r = (pOggetti->oggetto)::ritorna_aspetto;
-		(head->schermata)::aggiungi_elemento(pos, r);
+		(pOggetti->oggetto).ritorna_posizione(pos);
+		char r = (pOggetti->oggetto).ritorna_aspetto;
+		(head->schermata).aggiungi_elemento(pos, r);
 		pOggetti = pOggetti->next;
 	}
 }

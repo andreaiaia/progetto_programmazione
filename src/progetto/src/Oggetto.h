@@ -5,7 +5,7 @@
  *      Author: Andrea
  */
 #include <iostream>
-using namespace std;
+
 
 class Oggetto {		// La classe oggetto genera direttamente gli Scudi, mentre la classe figlia cuore genera i cuori
 protected:

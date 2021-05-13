@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "funzioni.h"
-using namespace std ;
+
 
 #define x 10
 #define y 10
