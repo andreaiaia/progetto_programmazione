@@ -1,10 +1,3 @@
-/*
- * Personaggio.cpp
- *
- *  Created on: 7 mar 2021
- *      Author: Andrea
- */
-
 #include "Personaggio.h"
 #include <stdio.h>
 #include <string.h>
@@ -15,75 +8,81 @@ int numerocifre(int intero){
 	else{
 	int n=0;
 	while(intero>0){
-    intero=intero/10;
-    n=n+1;
+    	intero=intero/10;
+    	n=n+1;
 	}
 	return n;
 	}
 }
 
 LPCSTR INTTOLPCSTR(int intero){
-	int ncifre = numerocifre(intero);
-	LPCSTR stringa[ncifre];
+	int ncifre = numerocifre(intero);         //numero delle cifre della stringa
+	char stringa[ncifre];
 	int resto;
 	int c = ncifre-1;
 	int i=0;
 	while (i<ncifre){
-    stringa[i]="0";
-    i=i+1;
+		stringa[i]='0';
+		i=i+1;
 	}
-	stringa[ncifre]="\0";
+	stringa[ncifre]='\0';
 	while (intero>0){
 		resto=intero%10;
 		intero=intero/10;
 		switch (resto){
 		case 0:
-			stringa[c]="0";
+			stringa[c]='0';
 			break;
 		case 1:
-			stringa[c]="1";
+			stringa[c]='1';
 			break;
 		case 2:
-			stringa[c]="2";
+			stringa[c]='2';
 			break;
 		case 3:
-			stringa[c]="3";
+			stringa[c]='3';
 			break;
 		case 4:
-			stringa[c]="4";
+			stringa[c]='4';
 			break;
 		case 5:
-			stringa[c]="5";
+			stringa[c]='5';
 			break;
 		case 6:
-			stringa[c]="6";
+			stringa[c]='6';
 			break;
 		case 7:
-			stringa[c]="7";
+			stringa[c]='7';
 			break;
 		case 8:
-			stringa[c]="8";
+			stringa[c]='8';
 			break;
 		case 9:
-			stringa[c]="9";
+			stringa[c]='9';
 			break;
 		default:
 			break;
 		}
 		c=c-1;
 	}
-	return stringa[];
+	LPCSTR ciaooo = stringa;
+	return ciaooo;
 }
 
 Personaggio::Personaggio(int pX, int pY){
 	posX = pX;
 	posY = pY;
 	vita = 100;
-	score = 0;
+	score = 10000;
 	scudo = false;
 }
 
-void Personaggio::muovi(int mov){
+void Personaggio::incrementascore(HWND hwnd, HRGN punteggio){
+	score = score-1;
+	InvalidateRgn(hwnd, punteggio, false);         //se score minore di zero agigustaer
+}
+
+void Personaggio::muovi(int mov, HWND hwnd, HRGN casachiocciolino){
 	if (mov==0){
 		posY=posY-1;
 	}
@@ -96,9 +95,10 @@ void Personaggio::muovi(int mov){
 	if (mov==3){
 		posX=posX-1;
 	}
+	InvalidateRgn(hwnd, casachiocciolino, false);
 }
 
-void Personaggio::nuova_posizione(int nX, int nY) {
+void Personaggio::nuova_posizione(int nX, int nY) {        //aggiustare con la nuova posizione
 	posX = nX;
 	posY = nY;
 }

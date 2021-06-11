@@ -1,9 +1,3 @@
-/*
- * Personaggio.h
- *
- *  Created on: 7 mar 2021
- *      Author: Andrea
- */
 #include <iostream>
 using namespace std;
 
@@ -18,7 +12,9 @@ protected:
 public:
 	Personaggio (int pX, int pY);
 
-	void muovi (int mov);
+	void incrementascore(HWND hwnd, HRGN punteggio);
+
+	void muovi (int mov, HWND hwnd, HRGN casachiocciolino);
 
 	void nuova_posizione (int nX, int nY);
 
